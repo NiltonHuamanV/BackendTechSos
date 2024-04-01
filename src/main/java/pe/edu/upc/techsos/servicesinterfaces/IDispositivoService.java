@@ -1,0 +1,10 @@
+package pe.edu.upc.techsos.servicesinterfaces;
+
+import pe.edu.upc.techsos.entities.Dispositivo;
+
+import java.util.List;
+
+public interface IDispositivoService {
+    public void insert(Dispositivo dispositivo);
+    public List<Dispositivo> list();
+}

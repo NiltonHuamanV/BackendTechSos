@@ -1,0 +1,19 @@
+package pe.edu.upc.techsos.servicesimplements;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import pe.edu.upc.techsos.entities.Dispositivo;
+import pe.edu.upc.techsos.repositories.IDispositivoRepository;
+import pe.edu.upc.techsos.servicesinterfaces.IDispositivoService;
+
+import java.util.List;
+
+@Service
+public class DispositivoServiceImplement implements IDispositivoService {
+@Autowired
+private IDispositivoRepository dR;
+    @Override
+    public void insert(Dispositivo dispositivo) {dR.save(dispositivo);}
+    @Override
+    public List<Dispositivo> list() { return dR.findAll();}
+}
