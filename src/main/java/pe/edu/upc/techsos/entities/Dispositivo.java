@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "Dispositivo")
 
+//Creacion tabla dispositivo
     public class Dispositivo {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
