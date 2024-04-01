@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/Dispositivos")
-
+//Tabla controladora Dispositivo
 public class DispositivoController {
     @Autowired
     private IDispositivoService dS;
