@@ -31,5 +31,25 @@ public class DispositivoController {
             return m.map(y,DispositivoDTO.class);
         }).collect(Collectors.toList());
     }
+    @DeleteMapping("/{id}")
+    public void eliminar(@PathVariable("id") Integer id)
+    {
+        dS.delete(id);
+    }
+    @GetMapping("/{id}")
+    public DispositivoDTO listarId(@PathVariable ("id") Integer id)
+    {
+        ModelMapper d = new ModelMapper();
+        DispositivoDTO dto = d.map(dS.listid(id),DispositivoDTO.class);
+        return dto;
+    }
+    @GetMapping("/find")
+    public List<DispositivoDTO> buscarporanio(@RequestParam String marca)
+    {
+        return dS.findByMarca(marca).stream().map(y-> {
+            ModelMapper d= new ModelMapper();
+            return d.map(y,DispositivoDTO.class);
+        }).collect(Collectors.toList());
+    }
 
 }

@@ -16,4 +16,22 @@ private IDispositivoRepository dR;
     public void insert(Dispositivo dispositivo) {dR.save(dispositivo);}
     @Override
     public List<Dispositivo> list() { return dR.findAll();}
+
+    @Override
+    public void delete(int id) {
+        dR.deleteById(id);
+
+    }
+
+    @Override
+    public Dispositivo listid(int id) {
+        return dR.findById(id).orElse(new Dispositivo());
+    }
+
+    @Override
+    public List<Dispositivo> findByMarca(String marca) {
+        return dR.findByMarca(marca);
+    }
+
+
 }
