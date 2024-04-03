@@ -22,11 +22,24 @@ public class DeliveryController {
         Delivery delivery = d.map(deliveryDTO, Delivery.class);
         dS.insert(delivery);
     }
+
     @GetMapping
     public List<DeliveryDTO> listar(){
         return dS.list().stream().map(y -> {
             ModelMapper m = new ModelMapper();
             return m.map(y, DeliveryDTO.class);
         }).collect(Collectors.toList());
+    }
+
+    @DeleteMapping("/{id}")
+    public void eliminar(@PathVariable("id") Integer id){
+        dS.delete(id);
+    }
+
+    @GetMapping("/{id}")
+    public DeliveryDTO listarId(@PathVariable("id") Integer id){
+        ModelMapper m = new ModelMapper();
+        DeliveryDTO dto = m.map(dS.listId(id),DeliveryDTO.class);
+        return dto;
     }
 }

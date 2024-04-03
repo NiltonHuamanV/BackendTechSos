@@ -22,4 +22,14 @@ public class DeliveryServiceImplements implements IDeliveryService {
     public List<Delivery> list() {
         return dR.findAll();
     }
+
+    @Override
+    public void delete(int id) {
+        dR.deleteById(id);
+    }
+
+    @Override
+    public Delivery listId(int id) {
+        return dR.findById(id).orElse(new Delivery());
+    }
 }
