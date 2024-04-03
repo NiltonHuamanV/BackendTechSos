@@ -13,14 +13,6 @@ public class DispositivoDTO {
     public DispositivoDTO() {
     }
 
-    public DispositivoDTO(int idDispositivo, String tipo, String marca, String modelo, int numserie) {
-        this.idDispositivo = idDispositivo;
-        this.tipo = tipo;
-        this.marca = marca;
-        this.modelo = modelo;
-        this.numserie = numserie;
-    }
-
     public int getIdDispositivo() {
         return idDispositivo;
     }
