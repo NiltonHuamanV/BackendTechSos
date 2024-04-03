@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/Dispositivos")
+@RequestMapping("/Dispositivo")
 //Tabla controladora Dispositivo
 public class DispositivoController {
     @Autowired
@@ -31,6 +31,5 @@ public class DispositivoController {
             return m.map(y,DispositivoDTO.class);
         }).collect(Collectors.toList());
     }
-
 
 }
