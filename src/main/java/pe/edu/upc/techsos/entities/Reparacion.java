@@ -14,7 +14,7 @@ public class Reparacion {
     private int idReparacion;
     @Column(name ="Fecha Inicio",nullable = false)
     private Date FechaInicio;
-    @Column(name ="Fecha Inicio",nullable = false)
+    @Column(name ="Fecha Fin",nullable = false)
     private Date FechaFin;
     @Column(name = "Problema", nullable = false, length = 100)
     private String Problema;
