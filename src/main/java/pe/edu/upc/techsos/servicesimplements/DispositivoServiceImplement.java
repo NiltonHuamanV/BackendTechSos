@@ -22,16 +22,9 @@ private IDispositivoRepository dR;
         dR.deleteById(id);
 
     }
-
     @Override
     public Dispositivo listid(int id) {
         return dR.findById(id).orElse(new Dispositivo());
     }
-
-    @Override
-    public List<Dispositivo> findByMarca(String marca) {
-        return dR.findByMarca(marca);
-    }
-
 
 }

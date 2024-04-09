@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface IDispositivoRepository extends JpaRepository<Dispositivo,Integer> {
-public List<Dispositivo> findByMarca(String marca);
+
 }

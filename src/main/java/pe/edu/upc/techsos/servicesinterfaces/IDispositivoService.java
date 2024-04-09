@@ -8,6 +8,5 @@ public interface IDispositivoService {
     public void insert(Dispositivo dispositivo);
     public List<Dispositivo> list();
     public void delete (int id);
-    public Dispositivo listid(int id);
-    public List<Dispositivo> findByMarca (String marca);
+    public Dispositivo listid(int id);;
 }
