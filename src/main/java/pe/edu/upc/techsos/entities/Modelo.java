@@ -3,24 +3,24 @@ package pe.edu.upc.techsos.entities;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "Marca")
+@Table(name = "Modelo")
 
-public class Marca {
+public class Modelo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idmarca;
+    private int idmodelo;
     @Column(name = "Nombre", nullable = false)
     private String nombre;
 
-    public Marca() {
+    public Modelo() {
     }
 
     public int getIdmarca() {
-        return idmarca;
+        return idmodelo;
     }
 
     public void setIdmarca(int idmarca) {
-        this.idmarca = idmarca;
+        this.idmodelo = idmodelo;
     }
 
     public String getNombre() {

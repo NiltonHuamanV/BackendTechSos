@@ -1,5 +1,4 @@
 package pe.edu.upc.techsos.entities;
-//HOLA
 import jakarta.persistence.*;
 @Entity
 @Table(name = "Dispositivo")

@@ -1,17 +1,16 @@
 package pe.edu.upc.techsos.dtos;
 
+public class ModeloDTO {
+    private int idmodelo;
 
-public class MarcaDTO {
-
-    private int idmarca;
     private String nombre;
 
     public int getIdmarca() {
-        return idmarca;
+        return idmodelo;
     }
 
     public void setIdmarca(int idmarca) {
-        this.idmarca = idmarca;
+        this.idmodelo = idmodelo;
     }
 
     public String getNombre() {
