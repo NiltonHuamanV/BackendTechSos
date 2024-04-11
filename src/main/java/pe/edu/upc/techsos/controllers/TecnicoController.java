@@ -3,31 +3,32 @@ package pe.edu.upc.techsos.controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import pe.edu.upc.techsos.dtos.MarcaDTO;
-import pe.edu.upc.techsos.entities.Marca;
-import pe.edu.upc.techsos.servicesinterfaces.IMarcaService;
+import pe.edu.upc.techsos.dtos.TecnicoDTO;
+import pe.edu.upc.techsos.entities.Tecnico;
+import pe.edu.upc.techsos.servicesinterfaces.ITecnicoService;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/marca")
-public class MarcaController {
+@RequestMapping("/tecnico")
+
+public class TecnicoController {
     @Autowired
-    private IMarcaService dS;
+    private ITecnicoService dS;
     @PostMapping
-    public void insertar (@RequestBody MarcaDTO marcaDTO)
+    public void insertar (@RequestBody TecnicoDTO tecnicoDTO)
     {
         ModelMapper d = new ModelMapper();
-        Marca marca = d.map (marcaDTO, Marca.class);
-        dS.insert(marca);
+        Tecnico tecnico = d.map (tecnicoDTO, Tecnico.class);
+        dS.insert(tecnico);
     }
-    @GetMapping
-    public List<MarcaDTO> Listar()
+    @GetMapping()
+    public List<TecnicoDTO> Listar()
     {
         return dS.list().stream().map(y-> {
             ModelMapper m= new ModelMapper();
-            return m.map(y,MarcaDTO.class);
+            return m.map(y,TecnicoDTO.class);
         }).collect(Collectors.toList());
     }
     @DeleteMapping("/{id}")
@@ -35,11 +36,12 @@ public class MarcaController {
     {
         dS.delete(id);
     }
+
     @GetMapping("/{id}")
-    public MarcaDTO listarId(@PathVariable ("id") Integer id)
+    public TecnicoDTO listarId(@PathVariable ("id") Integer id)
     {
         ModelMapper d = new ModelMapper();
-        MarcaDTO dto = d.map(dS.listid(id),MarcaDTO.class);
+        TecnicoDTO dto = d.map(dS.listid(id),TecnicoDTO.class);
         return dto;
     }
 

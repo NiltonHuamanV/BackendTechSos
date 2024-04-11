@@ -3,7 +3,6 @@ package pe.edu.upc.techsos.controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import pe.edu.upc.techsos.dtos.MarcaDTO;
 
 import pe.edu.upc.techsos.dtos.ModeloDTO;
 import pe.edu.upc.techsos.entities.Modelo;
@@ -13,7 +12,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/Modelo")
+@RequestMapping("/modelo")
 public class ModeloController {
     @Autowired
     private IModeloService dS;

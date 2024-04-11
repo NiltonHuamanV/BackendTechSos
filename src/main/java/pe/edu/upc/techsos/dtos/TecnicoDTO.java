@@ -1,0 +1,65 @@
+package pe.edu.upc.techsos.dtos;
+
+
+public class TecnicoDTO {
+    private int idtecnico;
+
+    private String nombre;
+
+    private String apellido;
+
+    private int edad;
+
+    private int aniosexperiencia;
+
+    public TecnicoDTO() {
+    }
+
+    public TecnicoDTO(int idtecnico, String nombre, String apellido, int edad, int aniosexp) {
+        this.idtecnico = idtecnico;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.edad = edad;
+        this.aniosexperiencia = aniosexp;
+    }
+
+    public int getIdtecnico() {
+        return idtecnico;
+    }
+
+    public void setIdtecnico(int idtecnico) {
+        this.idtecnico = idtecnico;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public int getEdad() {
+        return edad;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+
+    public int getAniosexp() {
+        return aniosexperiencia;
+    }
+
+    public void setAniosexp(int aniosexp) {
+        this.aniosexperiencia = aniosexp;
+    }
+}

@@ -1,6 +1,5 @@
 package pe.edu.upc.techsos.dtos;
 
-//Creacion DTO Dispositivo
 public class DispositivoDTO {
     private int idDispositivo;
 

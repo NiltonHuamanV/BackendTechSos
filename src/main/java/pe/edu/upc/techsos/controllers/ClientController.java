@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/Cliente")
+@RequestMapping("/cliente")
 public class ClientController
 {
     @Autowired

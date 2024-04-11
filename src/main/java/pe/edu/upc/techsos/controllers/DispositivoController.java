@@ -11,8 +11,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/Dispositivo")
-//Tabla controladora Dispositivo
+@RequestMapping("/dispositivo")
+
 public class DispositivoController {
     @Autowired
     private IDispositivoService dS;

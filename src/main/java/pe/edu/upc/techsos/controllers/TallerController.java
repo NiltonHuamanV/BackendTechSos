@@ -11,8 +11,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/Taller")
-//Tabla controladora Dispositivo
+@RequestMapping("/taller")
+
 public class TallerController {
     @Autowired
     private ITallerService dS;

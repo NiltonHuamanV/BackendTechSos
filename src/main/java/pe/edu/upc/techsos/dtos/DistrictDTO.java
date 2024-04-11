@@ -1,6 +1,5 @@
 package pe.edu.upc.techsos.dtos;
 
-import jakarta.persistence.Column;
 
 public class DistrictDTO {
     private int idDistrict;

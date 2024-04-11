@@ -1,9 +1,5 @@
 package pe.edu.upc.techsos.dtos;
 
-import jakarta.persistence.Column;
-
-//Tabla dto cliente
-
 public class ClienteDTO
 {
     private int idCliente;
