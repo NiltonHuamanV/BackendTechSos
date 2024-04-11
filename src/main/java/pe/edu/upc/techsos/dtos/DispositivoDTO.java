@@ -5,8 +5,6 @@ public class DispositivoDTO {
 
     private int numserie;
 
-    public DispositivoDTO() {
-    }
 
     public int getIdDispositivo() {
         return idDispositivo;

@@ -12,16 +12,6 @@ public class TecnicoDTO {
 
     private int aniosexperiencia;
 
-    public TecnicoDTO() {
-    }
-
-    public TecnicoDTO(int idtecnico, String nombre, String apellido, int edad, int aniosexp) {
-        this.idtecnico = idtecnico;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.edad = edad;
-        this.aniosexperiencia = aniosexp;
-    }
 
     public int getIdtecnico() {
         return idtecnico;

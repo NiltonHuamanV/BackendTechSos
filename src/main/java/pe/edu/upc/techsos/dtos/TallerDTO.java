@@ -8,14 +8,6 @@ public class TallerDTO {
 
     private String numerodetelefono;
 
-    public TallerDTO(int idTaller, String nombre) {
-        this.idTaller = idTaller;
-        this.nombre = nombre;
-    }
-
-    public TallerDTO() {
-
-    }
     public int getIdTaller() {
         return idTaller;
     }
