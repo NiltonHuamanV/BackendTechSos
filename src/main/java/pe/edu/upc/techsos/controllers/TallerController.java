@@ -9,7 +9,7 @@ import pe.edu.upc.techsos.servicesinterfaces.ITallerService;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
+//tabla controller
 @RestController
 @RequestMapping("/taller")
 
