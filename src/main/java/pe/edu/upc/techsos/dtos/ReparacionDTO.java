@@ -1,5 +1,7 @@
 package pe.edu.upc.techsos.dtos;
 
+import pe.edu.upc.techsos.entities.DispositivoTaller;
+
 import java.time.LocalDate;
 import java.util.Date;
 
@@ -16,6 +18,8 @@ public class ReparacionDTO {
         private String Estado;
 
         private float Costo;
+
+        private DispositivoTaller dispositivoTaller;
 
         public int getIdReparacion() {
             return idReparacion;
@@ -65,5 +69,12 @@ public class ReparacionDTO {
             this.Costo = costo;
         }
 
+        public DispositivoTaller getDispositivoTaller() {
+            return dispositivoTaller;
+        }
+
+        public void setDispositivoTaller(DispositivoTaller dispositivoTaller) {
+            this.dispositivoTaller = dispositivoTaller;
+        }
 }
 
