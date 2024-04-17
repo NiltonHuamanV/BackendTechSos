@@ -3,7 +3,7 @@ package pe.edu.upc.techsos.dtos;
 public class DispositivoDTO {
     private int idDispositivo;
 
-    private int numserie;
+    private String observaciones;
 
 
     public int getIdDispositivo() {
@@ -14,11 +14,11 @@ public class DispositivoDTO {
         this.idDispositivo = idDispositivo;
     }
 
-    public int getNumserie() {
-        return numserie;
+    public String getObservaciones() {
+        return observaciones;
     }
 
-    public void setNumserie(int numserie) {
-        this.numserie = numserie;
+    public void setObservaciones(String observaciones) {
+        this.observaciones = observaciones;
     }
 }

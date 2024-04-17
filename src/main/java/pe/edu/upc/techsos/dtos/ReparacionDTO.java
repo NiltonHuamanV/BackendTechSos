@@ -1,14 +1,15 @@
 package pe.edu.upc.techsos.dtos;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class ReparacionDTO {
 
         private int idReparacion;
 
-        private Date FechaInicio;
+        private LocalDate FechaInicio;
 
-        private Date FechaFin;
+        private LocalDate FechaFin;
 
         private String Problema;
 
@@ -24,19 +25,19 @@ public class ReparacionDTO {
             this.idReparacion = idReparacion;
         }
 
-        public Date getFechaInicio() {
+        public LocalDate getFechaInicio() {
             return FechaInicio;
         }
 
-        public void setFechaInicio(Date fechaInicio) {
+        public void setFechaInicio(LocalDate fechaInicio) {
             this.FechaInicio = fechaInicio;
         }
 
-        public Date getFechaFin() {
+        public LocalDate getFechaFin() {
             return FechaFin;
         }
 
-        public void setFechaFin(Date fechaFin) {
+        public void setFechaFin(LocalDate fechaFin) {
             this.FechaFin = fechaFin;
         }
 

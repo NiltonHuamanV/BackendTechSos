@@ -2,6 +2,7 @@ package pe.edu.upc.techsos.entities;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -13,9 +14,9 @@ public class Reparacion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idReparacion;
     @Column(name ="Fecha Inicio",nullable = false)
-    private Date FechaInicio;
+    private LocalDate FechaInicio;
     @Column(name ="Fecha Fin",nullable = false)
-    private Date FechaFin;
+    private LocalDate FechaFin;
     @Column(name = "Problema", nullable = false, length = 100)
     private String Problema;
     @Column(name = "Estadp", nullable = false, length = 30)
@@ -25,7 +26,7 @@ public class Reparacion {
 
     public Reparacion(){}
 
-    public Reparacion(int idReparacion, Date FechaInicio, Date FechaFin, String Problema, String Estado, float Costo){
+    public Reparacion(int idReparacion, LocalDate FechaInicio, LocalDate FechaFin, String Problema, String Estado, float Costo){
         this.idReparacion=idReparacion;
         this.FechaInicio=FechaInicio;
         this.FechaFin=FechaFin;
@@ -42,19 +43,19 @@ public class Reparacion {
         this.idReparacion = idReparacion;
     }
 
-    public Date getFechaInicio() {
+    public LocalDate getFechaInicio() {
         return FechaInicio;
     }
 
-    public void setFechaInicio(Date fechaInicio) {
+    public void setFechaInicio(LocalDate fechaInicio) {
         this.FechaInicio = fechaInicio;
     }
 
-    public Date getFechaFin() {
+    public LocalDate getFechaFin() {
         return FechaFin;
     }
 
-    public void setFechaFin(Date fechaFin) {
+    public void setFechaFin(LocalDate fechaFin) {
         this.FechaFin = fechaFin;
     }
 

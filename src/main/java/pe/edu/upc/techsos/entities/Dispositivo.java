@@ -8,15 +8,16 @@ import jakarta.persistence.*;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idDispositivo;
-    @Column(name = "NumSerie", nullable = false)
-    private int numserie;
+    @Column(name = "Observaciones", nullable = false)
+    private String observaciones;
+
 
     public Dispositivo() {
     }
 
-    public Dispositivo(int idDispositivo, int numserie) {
+    public Dispositivo(int idDispositivo, String observaciones) {
         this.idDispositivo = idDispositivo;
-        this.numserie = numserie;
+        this.observaciones = observaciones;
     }
 
     public int getIdDispositivo() {
@@ -26,14 +27,15 @@ import jakarta.persistence.*;
     public void setIdDispositivo(int idDispositivo) {
         this.idDispositivo = idDispositivo;
     }
-
-    public int getNumserie() {
-        return numserie;
+    public String getObservaciones() {
+        return observaciones;
     }
 
-    public void setNumserie(int numserie) {
-        this.numserie = numserie;
+    public void setObservaciones(String observaciones) {
+        this.observaciones = observaciones;
     }
+
+
 }
 
 
