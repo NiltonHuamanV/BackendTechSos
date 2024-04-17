@@ -14,13 +14,18 @@ import jakarta.persistence.*;
     @JoinColumn(name = "modeloId")
     private Modelo modelo;
 
+    @ManyToOne
+    @JoinColumn(name = "clienteId")
+    private Cliente cliente;
+
     public Dispositivo() {
     }
 
-    public Dispositivo(int idDispositivo, String observaciones, Modelo modelo) {
+    public Dispositivo(int idDispositivo, String observaciones, Modelo modelo, Cliente cliente) {
         this.idDispositivo = idDispositivo;
         this.observaciones = observaciones;
         this.modelo = modelo;
+        this.cliente = cliente;
     }
 
     public int getIdDispositivo() {
@@ -45,6 +50,13 @@ import jakarta.persistence.*;
         this.modelo = modelo;
     }
 
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
 }
 
 

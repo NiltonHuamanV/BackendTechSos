@@ -24,15 +24,20 @@ public class Reparacion {
     @Column(name ="Costo",nullable = false)
     private float Costo;
 
+    @OneToOne
+    @JoinColumn(name = "dispositivo_taller_id")
+    private DispositivoTaller dispositivoTaller;
+
     public Reparacion(){}
 
-    public Reparacion(int idReparacion, LocalDate FechaInicio, LocalDate FechaFin, String Problema, String Estado, float Costo){
+    public Reparacion(int idReparacion, LocalDate FechaInicio, LocalDate FechaFin, String Problema, String Estado, float Costo, DispositivoTaller dispositivoTaller){
         this.idReparacion=idReparacion;
         this.FechaInicio=FechaInicio;
         this.FechaFin=FechaFin;
         this.Problema=Problema;
         this.Estado=Estado;
         this.Costo=Costo;
+        this.dispositivoTaller = dispositivoTaller;
     }
 
     public int getIdReparacion() {
@@ -83,4 +88,11 @@ public class Reparacion {
         this.Costo = costo;
     }
 
+    public DispositivoTaller getDispositivoTaller() {
+        return dispositivoTaller;
+    }
+
+    public void setDispositivoTaller(DispositivoTaller dispositivoTaller) {
+        this.dispositivoTaller = dispositivoTaller;
+    }
 }
