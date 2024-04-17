@@ -11,12 +11,25 @@ public class Taller {
     @Column(name = "NombreTaller", nullable = false)
     private String nombre;
 
-    @Column(name="Telefono", nullable = false, length = 9)
+    @Column(name = "Telefono", nullable = false, length = 9)
     private String numerodetelefono;
+    @Column(name = "Direccion", nullable = false, length = 100)
+    private String direccion;
 
-    public Taller(int idTaller, String name) {
+    @ManyToOne
+    @JoinColumn(name = "districtId")
+    private District district;
+    @OneToOne
+    @JoinColumn(name = "tecnicoId")
+    private Tecnico tecnico;
+
+    public Taller(int idTaller, String nombre, String numerodetelefono, String direccion, District district, Tecnico tecnico) {
         this.idTaller = idTaller;
         this.nombre = nombre;
+        this.numerodetelefono = numerodetelefono;
+        this.direccion = direccion;
+        this.district = district;
+        this.tecnico = tecnico;
     }
 
     public Taller() {
@@ -45,6 +58,28 @@ public class Taller {
 
     public void setNumerodetelefono(String numerodetelefono) {
         this.numerodetelefono = numerodetelefono;
+    }
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public District getDistrict() {
+        return district;
+    }
+
+    public void setDistrict(District district) {
+        this.district = district;
+    }
+    public Tecnico getTecnico() {
+        return tecnico;
+    }
+
+    public void setTecnico(Tecnico tecnico) {
+        this.tecnico = tecnico;
     }
 }
 

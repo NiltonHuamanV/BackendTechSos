@@ -19,12 +19,13 @@ public class Cliente
     private String telefono;
     @Column(name = "direccion",nullable = false,length =300)
     private String direccion;
-
-
+    @ManyToOne
+    @JoinColumn(name = "districtId")
+    private District district;
 
     public Cliente() {  }
 
-    public Cliente(int idCliente, String nombres, String apellidos, String email, String telefono, String direccion)
+    public Cliente(int idCliente, String nombres, String apellidos, String email, String telefono, String direccion, District district)
     {
         this.idCliente = idCliente;
         this.nombres = nombres;
@@ -32,6 +33,7 @@ public class Cliente
         this.email = email;
         this.telefono = telefono;
         this.direccion = direccion;
+        this.district = district;
     }
 
     public int getIdCliente() { return idCliente;   }
@@ -56,5 +58,13 @@ public class Cliente
 
     public String getDireccion() {  return direccion;   }
     public void setDireccion(String direccion) {    this.direccion = direccion; }
+
+    public District getDistrict() {
+        return district;
+    }
+
+    public void setDistrict(District district) {
+        this.district = district;
+    }
 
 }
