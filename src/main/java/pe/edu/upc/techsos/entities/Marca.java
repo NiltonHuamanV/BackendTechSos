@@ -15,6 +15,11 @@ public class Marca {
     public Marca() {
     }
 
+    public Marca(int idmarca, String nombre) {
+        this.idmarca = idmarca;
+        this.nombre = nombre;
+    }
+
     public int getIdmarca() {
         return idmarca;
     }

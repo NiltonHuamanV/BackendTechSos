@@ -12,14 +12,24 @@ public class Modelo {
     @Column(name = "Nombre", nullable = false)
     private String nombre;
 
+    @ManyToOne
+    @JoinColumn(name = "marcaId")
+    private Marca marca;
+
     public Modelo() {
     }
 
-    public int getIdmarca() {
+    public Modelo(int idmodelo, String nombre, Marca marca) {
+        this.idmodelo = idmodelo;
+        this.nombre = nombre;
+        this.marca = marca;
+    }
+
+    public int getIdmodelo() {
         return idmodelo;
     }
 
-    public void setIdmarca(int idmarca) {
+    public void setIdmodelo(int idmodelo) {
         this.idmodelo = idmodelo;
     }
 
@@ -29,5 +39,13 @@ public class Modelo {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public Marca getMarca() {
+        return marca;
+    }
+
+    public void setMarca(Marca marca) {
+        this.marca = marca;
     }
 }

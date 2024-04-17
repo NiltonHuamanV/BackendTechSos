@@ -1,10 +1,12 @@
 package pe.edu.upc.techsos.dtos;
 
+import pe.edu.upc.techsos.entities.Modelo;
+
 public class DispositivoDTO {
     private int idDispositivo;
 
     private String observaciones;
-
+    private Modelo modelo;
 
     public int getIdDispositivo() {
         return idDispositivo;
@@ -21,4 +23,12 @@ public class DispositivoDTO {
     public void setObservaciones(String observaciones) {
         this.observaciones = observaciones;
     }
+    public Modelo getModelo() {
+        return modelo;
+    }
+
+    public void setModelo(Modelo modelo) {
+        this.modelo = modelo;
+    }
+
 }
