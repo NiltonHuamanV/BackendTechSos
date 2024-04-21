@@ -4,9 +4,12 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.techsos.dtos.DispositivoDTO;
+import pe.edu.upc.techsos.dtos.SumDispositivosTallerEstadoDTO;
+import pe.edu.upc.techsos.dtos.SumDispositivosTallerMarcaModeloDTO;
 import pe.edu.upc.techsos.entities.Dispositivo;
 import pe.edu.upc.techsos.servicesinterfaces.IDispositivoService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -42,6 +45,35 @@ public class DispositivoController {
         ModelMapper d = new ModelMapper();
         DispositivoDTO dto = d.map(dS.listid(id),DispositivoDTO.class);
         return dto;
+    }
+
+    @GetMapping("/cantidaddispositivostallerestado")
+    public List<SumDispositivosTallerEstadoDTO> cantidadDispositivosTallerEstado(){
+        List<String[]> filaLista = dS.sumDispositivosPorTallerYEstado();
+        List<SumDispositivosTallerEstadoDTO> dtoLista = new ArrayList<>();
+        for(String[] columna:filaLista){
+            SumDispositivosTallerEstadoDTO dto = new SumDispositivosTallerEstadoDTO();
+            dto.setNombreTaller(columna[0]);
+            dto.setEstado(columna[1]);
+            dto.setCantidadDispositivos(Integer.parseInt(columna[2]));
+            dtoLista.add(dto);
+        }
+        return dtoLista;
+    }
+
+    @GetMapping("/cantidaddispositivostallermarcamodelo")
+    public List<SumDispositivosTallerMarcaModeloDTO> cantidadDispositivosTallerMarcaModelo(){
+        List<String[]> filaLista = dS.sumDispositivosPorTallerMarcaModelo();
+        List<SumDispositivosTallerMarcaModeloDTO> dtoLista = new ArrayList<>();
+        for(String[] columna:filaLista){
+            SumDispositivosTallerMarcaModeloDTO dto = new SumDispositivosTallerMarcaModeloDTO();
+            dto.setNombreTaller(columna[0]);
+            dto.setNombreMarca(columna[1]);
+            dto.setNombreModelo(columna[2]);
+            dto.setCantidadDispositivos(Integer.parseInt(columna[3]));
+            dtoLista.add(dto);
+        }
+        return dtoLista;
     }
 
 }

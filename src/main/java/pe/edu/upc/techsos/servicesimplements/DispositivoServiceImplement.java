@@ -27,4 +27,14 @@ private IDispositivoRepository dR;
         return dR.findById(id).orElse(new Dispositivo());
     }
 
+    @Override
+    public List<String[]> sumDispositivosPorTallerYEstado() {
+        return dR.sumDispositivosPorTallerYEstado();
+    }
+
+    @Override
+    public List<String[]> sumDispositivosPorTallerMarcaModelo() {
+        return dR.sumDispositivosPorTallerMarcaModelo();
+    }
+
 }

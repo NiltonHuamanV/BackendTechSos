@@ -9,4 +9,8 @@ public interface IDispositivoService {
     public List<Dispositivo> list();
     public void delete (int id);
     public Dispositivo listid(int id);
+
+    public List<String[]> sumDispositivosPorTallerYEstado();
+
+    public List<String[]> sumDispositivosPorTallerMarcaModelo();
 }
