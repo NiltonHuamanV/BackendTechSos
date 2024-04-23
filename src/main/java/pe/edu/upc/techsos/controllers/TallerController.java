@@ -23,6 +23,13 @@ public class TallerController {
         Taller taller = d.map (tallerDTO, Taller.class);
         dS.insert(taller);
     }
+    @PutMapping
+    public void modificar (@RequestBody TallerDTO tallerDTO)
+    {
+        ModelMapper d = new ModelMapper();
+        Taller taller = d.map (tallerDTO, Taller.class);
+        dS.insert(taller);
+    }
     @GetMapping()
     public List<TallerDTO> Listar()
     {

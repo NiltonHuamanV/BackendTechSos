@@ -33,6 +33,14 @@ public class DispositivoTallerController {
             return m.map(y,DispositivoTallerDTO.class);
         }).collect(Collectors.toList());
     }
+    @PutMapping
+    public void modificar (@RequestBody DispositivoTallerDTO dispositivoTallerDTO)
+    {
+        ModelMapper d = new ModelMapper();
+        DispositivoTaller dispositivoTaller = d.map (dispositivoTallerDTO, DispositivoTaller.class);
+        dtS.insert(dispositivoTaller);
+    }
+
 
     @DeleteMapping("/{id}")
     public void eliminar(@PathVariable("id") Integer id)
