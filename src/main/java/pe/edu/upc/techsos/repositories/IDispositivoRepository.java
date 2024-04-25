@@ -11,7 +11,7 @@ import java.util.List;
 public interface IDispositivoRepository extends JpaRepository<Dispositivo,Integer> {
     @Query(value = "select \n" +
             "    t.nombre_taller as Nombre_Taller, \n" +
-            "    r.estadp,\n" +
+            "    r.estado,\n" +
             "    count(dt.dispositivo_id) as Cantidad_Dispositivos \n" +
             "from \n" +
             "    Taller t \n" +
@@ -20,7 +20,7 @@ public interface IDispositivoRepository extends JpaRepository<Dispositivo,Intege
             "left join \n" +
             "    Reparacion r on dt.id_dispositivo_taller = r.dispositivo_taller_id \n" +
             "group by \n" +
-            "t.nombre_taller, r.estadp", nativeQuery = true)
+            "t.nombre_taller, r.estado", nativeQuery = true)
     public List<String[]> sumDispositivosPorTallerYEstado();
 
     @Query(value = "select \n" +
@@ -35,9 +35,9 @@ public interface IDispositivoRepository extends JpaRepository<Dispositivo,Intege
             "join \n" +
             "    Dispositivo d on dt.dispositivo_id = d.id_dispositivo \n" +
             "join \n" +
-            "    Modelo m on d.modelo_id = m.idmodelo \n" +
+            "    Modelo m on d.modelo_id = m.id_modelo \n" +
             "join \n" +
-            "    Marca ma on m.marca_id = ma.idmarca \n" +
+            "    Marca ma on m.marca_id = ma.id_marca \n" +
             "group by \n" +
             "    t.nombre_taller, ma.nombre, m.nombre;", nativeQuery = true)
     public List<String[]> sumDispositivosPorTallerMarcaModelo();
