@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.techsos.dtos.CantidadDispositivo_Fecha_Reparacion;
 import pe.edu.upc.techsos.dtos.RecaudacionTotal_Por_Año_Mes;
 import pe.edu.upc.techsos.dtos.ReparacionDTO;
+import pe.edu.upc.techsos.dtos.TallerDTO;
 import pe.edu.upc.techsos.entities.Reparacion;
+import pe.edu.upc.techsos.entities.Taller;
 import pe.edu.upc.techsos.servicesinterfaces.IReparacionService;
 
 import java.time.LocalDate;
@@ -35,6 +37,14 @@ public class ReparacionController {
             ModelMapper m= new ModelMapper();
             return m.map(y,ReparacionDTO.class);
         }).collect(Collectors.toList());
+    }
+
+    @PutMapping
+    public void modificar (@RequestBody ReparacionDTO reparacionDTO)
+    {
+        ModelMapper d = new ModelMapper();
+        Reparacion reparacion = d.map (reparacionDTO, Reparacion.class);
+        rS.insert(reparacion);
     }
 
     @GetMapping("/cantidad_dispositivo_fecha")
