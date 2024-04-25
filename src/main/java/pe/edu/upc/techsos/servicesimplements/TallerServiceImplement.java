@@ -2,6 +2,7 @@ package pe.edu.upc.techsos.servicesimplements;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pe.edu.upc.techsos.dtos.TallerDTO;
 import pe.edu.upc.techsos.entities.Taller;
 import pe.edu.upc.techsos.repositories.ITallerRepository;
 import pe.edu.upc.techsos.servicesinterfaces.ITallerService;
@@ -29,6 +30,16 @@ public class TallerServiceImplement implements ITallerService {
     @Override
     public List<String[]> getPosibleGananciaPorTaller(int tallerId) {
         return dR.getPosiblesGananciasPorTaller();
+    }
+
+    @Override
+    public List<Taller> getTalleresPorDistrito(int distritoId) {
+        return dR.getTallerPorDistrito(distritoId);
+    }
+
+    @Override
+    public List<Taller> getTalleresConMejorCalificacion() {
+        return dR.getTalleresMejorPuntuacion();
     }
 
 }

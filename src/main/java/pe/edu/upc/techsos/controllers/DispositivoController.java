@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.techsos.dtos.*;
 import pe.edu.upc.techsos.entities.Dispositivo;
+import pe.edu.upc.techsos.entities.Taller;
 import pe.edu.upc.techsos.servicesinterfaces.IDispositivoService;
 
 import java.util.ArrayList;
@@ -101,4 +102,5 @@ public class DispositivoController {
         }
         return dtoLista;
     }
+
 }

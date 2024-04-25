@@ -8,6 +8,7 @@ import pe.edu.upc.techsos.dtos.TallerDTO;
 import pe.edu.upc.techsos.entities.Taller;
 import pe.edu.upc.techsos.servicesinterfaces.ITallerService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 //tabla controller
@@ -59,5 +60,25 @@ public class TallerController {
         p.setTotal(Double.parseDouble(res[0]));
         return p;
     }
-
+    @GetMapping("/tallerespordistrito/{distrito_id}")
+    public List<TallerDTO> getTalleresPorDistrito(@PathVariable("distrito_id") int distritoId){
+        List<TallerDTO> tallerDTOS=new ArrayList<>();
+        List<Taller> tallers = dS.getTalleresPorDistrito(distritoId);
+        for(Taller t: tallers){
+            ModelMapper m = new ModelMapper();
+            TallerDTO tallerDTO = m.map(t,TallerDTO.class);
+            tallerDTOS.add(tallerDTO);
+        }
+        return tallerDTOS;
+    }
+    @GetMapping("/tallermejocalificacion")
+    public List<TallerDTO> getTalleresMejorCalificacion(){
+        List<TallerDTO> dtoLista = new ArrayList<>();
+        for(Taller taller:dS.getTalleresConMejorCalificacion()){
+            ModelMapper m = new ModelMapper();
+            TallerDTO tallerDTO = m.map(taller,TallerDTO.class);
+            dtoLista.add(tallerDTO);
+        }
+        return dtoLista;
+    }
 }

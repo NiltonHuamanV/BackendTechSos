@@ -1,5 +1,6 @@
 package pe.edu.upc.techsos.servicesinterfaces;
 
+import pe.edu.upc.techsos.dtos.TallerDTO;
 import pe.edu.upc.techsos.entities.Taller;
 
 import java.util.List;
@@ -12,4 +13,6 @@ public interface ITallerService {
 
     Taller listid(int id);
     List<String[]> getPosibleGananciaPorTaller(int tallerId);
+    List<Taller> getTalleresPorDistrito(int distritoId);
+    List<Taller> getTalleresConMejorCalificacion();
 }
