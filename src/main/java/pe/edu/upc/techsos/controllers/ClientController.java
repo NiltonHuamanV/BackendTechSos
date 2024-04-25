@@ -25,6 +25,15 @@ public class ClientController
         cS.insert(cliente);
     }
 
+
+    @PutMapping
+    public void modificar(@RequestBody ClienteDTO clienteDTO)
+    {
+        ModelMapper d = new ModelMapper();
+        Cliente cliente = d.map(clienteDTO, Cliente.class);
+        cS.insert(cliente);
+    }
+
     @GetMapping
     public List<ClienteDTO> listar()
     {
