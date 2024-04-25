@@ -13,18 +13,18 @@ public class Reparacion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idReparacion;
-    @Column(name ="Fecha Inicio",nullable = false)
+    @Column(name ="FechaInicio",nullable = false)
     private LocalDate FechaInicio;
-    @Column(name ="Fecha Fin",nullable = false)
+    @Column(name ="FechaFin",nullable = false)
     private LocalDate FechaFin;
     @Column(name = "Problema", nullable = false, length = 100)
     private String Problema;
-    @Column(name = "Estadp", nullable = false, length = 30)
+    @Column(name = "Estado", nullable = false, length = 30)
     private String Estado;
     @Column(name ="Costo",nullable = false)
     private float Costo;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "dispositivo_taller_id")
     private DispositivoTaller dispositivoTaller;
 

@@ -8,24 +8,24 @@ import jakarta.persistence.*;
 public class Marca {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idmarca;
+    private int idMarca;
     @Column(name = "Nombre", nullable = false)
     private String nombre;
 
     public Marca() {
     }
 
-    public Marca(int idmarca, String nombre) {
-        this.idmarca = idmarca;
+    public Marca(int idMarca, String nombre) {
+        this.idMarca = idMarca;
         this.nombre = nombre;
     }
 
     public int getIdmarca() {
-        return idmarca;
+        return idMarca;
     }
 
     public void setIdmarca(int idmarca) {
-        this.idmarca = idmarca;
+        this.idMarca = idmarca;
     }
 
     public String getNombre() {

@@ -8,7 +8,7 @@ public class DispositivoTaller {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idDispositivoTaller;
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "dispositivoId")
     private Dispositivo dispositivo;
     @ManyToOne
