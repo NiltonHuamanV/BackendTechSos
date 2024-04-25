@@ -23,6 +23,13 @@ public class TecnicoController {
         Tecnico tecnico = d.map (tecnicoDTO, Tecnico.class);
         dS.insert(tecnico);
     }
+    @PutMapping
+    public void modificar (@RequestBody TecnicoDTO tecnicoDTO)
+    {
+        ModelMapper d = new ModelMapper();
+        Tecnico tecnico = d.map (tecnicoDTO, Tecnico.class);
+        dS.insert(tecnico);
+    }
     @GetMapping()
     public List<TecnicoDTO> Listar()
     {

@@ -26,6 +26,13 @@ public class DispositivoController {
         Dispositivo dispositivo = d.map (dispositivoDTO, Dispositivo.class);
         dS.insert(dispositivo);
     }
+    @PutMapping
+    public void modificar (@RequestBody DispositivoDTO dispositivoDTO)
+    {
+        ModelMapper d = new ModelMapper();
+        Dispositivo dispositivo = d.map (dispositivoDTO, Dispositivo.class);
+        dS.insert(dispositivo);
+    }
     @GetMapping
     public List<DispositivoDTO> Listar()
     {
