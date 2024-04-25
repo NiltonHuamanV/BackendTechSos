@@ -3,6 +3,7 @@ package pe.edu.upc.techsos.controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.techsos.dtos.PosibleGananciaTotal;
 import pe.edu.upc.techsos.dtos.TallerDTO;
 import pe.edu.upc.techsos.entities.Taller;
 import pe.edu.upc.techsos.servicesinterfaces.ITallerService;
@@ -50,6 +51,13 @@ public class TallerController {
         ModelMapper d = new ModelMapper();
         TallerDTO dto = d.map(dS.listid(id),TallerDTO.class);
         return dto;
+    }
+    @GetMapping("/posibleganancia/{id}")
+    public PosibleGananciaTotal getPosibleGanancia(@PathVariable("id") int tallerId){
+        String[] res=dS.getPosibleGananciaPorTaller(tallerId).get(0);
+        PosibleGananciaTotal p = new PosibleGananciaTotal();
+        p.setTotal(Double.parseDouble(res[0]));
+        return p;
     }
 
 }

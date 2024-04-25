@@ -11,4 +11,5 @@ public interface ITallerService {
     void delete(int id);
 
     Taller listid(int id);
+    List<String[]> getPosibleGananciaPorTaller(int tallerId);
 }

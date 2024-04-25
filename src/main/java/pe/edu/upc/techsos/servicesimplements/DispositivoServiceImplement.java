@@ -37,4 +37,14 @@ private IDispositivoRepository dR;
         return dR.sumDispositivosPorTallerMarcaModelo();
     }
 
+    @Override
+    public List<String[]> getEstadoDispositivoEnReparacion(Long dispositivoId) {
+        return dR.getEstadoDispositivoEnRepacion(dispositivoId);
+    }
+
+    @Override
+    public List<String[]> getCantidadDispositivosPorEstado(Long tallerId) {
+        return dR.getCantidadDispositivosPorEstado(tallerId);
+    }
+
 }
