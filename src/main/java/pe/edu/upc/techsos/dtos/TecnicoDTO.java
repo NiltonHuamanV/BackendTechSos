@@ -2,7 +2,7 @@ package pe.edu.upc.techsos.dtos;
 
 
 public class TecnicoDTO {
-    private int idtecnico;
+    private int IdTecnico;
 
     private String nombre;
 
@@ -14,11 +14,11 @@ public class TecnicoDTO {
 
 
     public int getIdtecnico() {
-        return idtecnico;
+        return IdTecnico;
     }
 
     public void setIdtecnico(int idtecnico) {
-        this.idtecnico = idtecnico;
+        this.IdTecnico = idtecnico;
     }
 
     public String getNombre() {

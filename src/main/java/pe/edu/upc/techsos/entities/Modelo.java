@@ -8,7 +8,7 @@ import jakarta.persistence.*;
 public class Modelo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idmodelo;
+    private int idModelo;
     @Column(name = "Nombre", nullable = false)
     private String nombre;
 
@@ -19,18 +19,18 @@ public class Modelo {
     public Modelo() {
     }
 
-    public Modelo(int idmodelo, String nombre, Marca marca) {
-        this.idmodelo = idmodelo;
+    public Modelo(int idModelo, String nombre, Marca marca) {
+        this.idModelo = idModelo;
         this.nombre = nombre;
         this.marca = marca;
     }
 
     public int getIdmodelo() {
-        return idmodelo;
+        return idModelo;
     }
 
     public void setIdmodelo(int idmodelo) {
-        this.idmodelo = idmodelo;
+        this.idModelo = idmodelo;
     }
 
     public String getNombre() {
