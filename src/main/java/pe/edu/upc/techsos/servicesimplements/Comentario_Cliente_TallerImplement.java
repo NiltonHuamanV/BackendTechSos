@@ -20,4 +20,8 @@ public class Comentario_Cliente_TallerImplement implements IComentario_Cliente_T
     public void delete(int id) {
         cR.deleteById(id);
     }
+
+    @Override
+    public List<String[]> ListarMejoresTalleres() { return cR.ListarMejoresTalleres();  }
+
 }

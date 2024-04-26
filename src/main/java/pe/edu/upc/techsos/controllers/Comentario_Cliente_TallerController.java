@@ -5,11 +5,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.techsos.dtos.Comentario_Cliente_TallerDTO;
 import pe.edu.upc.techsos.dtos.DispositivoDTO;
+import pe.edu.upc.techsos.dtos.MejoresTalleresDTO;
 import pe.edu.upc.techsos.entities.Comentario_Cliente_Taller;
 import pe.edu.upc.techsos.entities.Dispositivo;
 import pe.edu.upc.techsos.servicesinterfaces.IComentario_Cliente_TallerService;
 import pe.edu.upc.techsos.servicesinterfaces.IDispositivoService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -46,4 +48,22 @@ public class Comentario_Cliente_TallerController {
     {
         cS.delete(id);
     }
+
+
+    @GetMapping("/mejoresTalleres")
+    public List<MejoresTalleresDTO> ListarMejoresTalleres() {
+        List<String[]> filaLista = cS.ListarMejoresTalleres();
+        List<MejoresTalleresDTO> dtoLista=new ArrayList<>();
+        for(String[] columna:filaLista){
+            MejoresTalleresDTO dto=new MejoresTalleresDTO();
+            dto.setIdTaller(Integer.parseInt(columna[0]));
+            dto.setNombre_taller(columna[1]);
+            dto.setDireccion(columna[2]);
+            dto.setTelefono(columna[3]);
+            dto.setPromediocalificacion(Double.parseDouble(columna[4]));
+            dtoLista.add(dto);
+        }
+        return  dtoLista;
+    }
+
 }

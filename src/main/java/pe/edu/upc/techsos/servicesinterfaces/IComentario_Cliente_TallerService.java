@@ -10,4 +10,5 @@ public interface IComentario_Cliente_TallerService {
 
     public void delete (int id);
 
+    public List<String[]>ListarMejoresTalleres();
 }
