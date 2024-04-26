@@ -16,6 +16,7 @@ public class Comentario_Cliente_Taller {
     private int calificacion;
     @Column(name = "FechaComentario", nullable = false)
     private LocalDate fechaComentario;
+
     @ManyToOne
     @JoinColumn(name = "clienteId")
     private Cliente cliente;
