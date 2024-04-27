@@ -29,7 +29,6 @@ public class ReparacionController {
         Reparacion reparacion = d.map(reparacionDTO, Reparacion.class);
         rS.insert(reparacion);
     }
-
     @GetMapping
     public List<ReparacionDTO> Listar()
     {
@@ -37,6 +36,11 @@ public class ReparacionController {
             ModelMapper m= new ModelMapper();
             return m.map(y,ReparacionDTO.class);
         }).collect(Collectors.toList());
+    }
+    @DeleteMapping("/{id}")
+    public void eliminar(@PathVariable("id") Integer id)
+    {
+        rS.delete(id);
     }
 
     @PutMapping
