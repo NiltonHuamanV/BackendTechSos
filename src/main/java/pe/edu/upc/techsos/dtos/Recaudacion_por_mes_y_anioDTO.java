@@ -1,11 +1,9 @@
 package pe.edu.upc.techsos.dtos;
 
-import java.time.LocalDate;
-
-public class RecaudacionTotal_Por_Año_Mes {
+public class Recaudacion_por_mes_y_anioDTO {
     private int anio;
     private int mes;
-    private int recaudaciontotal;
+    private float recaudacion_total;
 
     public int getAnio() {
         return anio;
@@ -23,11 +21,11 @@ public class RecaudacionTotal_Por_Año_Mes {
         this.mes = mes;
     }
 
-    public int getRecaudaciontotal() {
-        return recaudaciontotal;
+    public float getRecaudacion_total() {
+        return recaudacion_total;
     }
 
-    public void setRecaudaciontotal(int recaudaciontotal) {
-        this.recaudaciontotal = recaudaciontotal;
+    public void setRecaudacion_total(float recaudacion_total) {
+        this.recaudacion_total = recaudacion_total;
     }
 }

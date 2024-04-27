@@ -32,4 +32,5 @@ public class ReparacionServiceImplements implements IReparacionService {
     public List<String[]> recaudacionTotalPorMesyAnio(int anio, int mes) {
         return rR.recaudacionTotalPorMesyAnio(anio, mes);
     }
+
 }
