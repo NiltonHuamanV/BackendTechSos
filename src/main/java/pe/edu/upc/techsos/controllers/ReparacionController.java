@@ -5,7 +5,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.techsos.dtos.CantidadDispositivo_Fecha_Reparacion;
-import pe.edu.upc.techsos.dtos.RecaudacionTotal_Por_Año_Mes;
+import pe.edu.upc.techsos.dtos.Recaudacion_por_mes_y_anioDTO;
 import pe.edu.upc.techsos.dtos.ReparacionDTO;
 import pe.edu.upc.techsos.dtos.TallerDTO;
 import pe.edu.upc.techsos.entities.Reparacion;
@@ -29,7 +29,6 @@ public class ReparacionController {
         Reparacion reparacion = d.map(reparacionDTO, Reparacion.class);
         rS.insert(reparacion);
     }
-
     @GetMapping
     public List<ReparacionDTO> Listar()
     {
@@ -37,6 +36,11 @@ public class ReparacionController {
             ModelMapper m= new ModelMapper();
             return m.map(y,ReparacionDTO.class);
         }).collect(Collectors.toList());
+    }
+    @DeleteMapping("/{id}")
+    public void eliminar(@PathVariable("id") Integer id)
+    {
+        rS.delete(id);
     }
 
     @PutMapping
@@ -62,16 +66,16 @@ public class ReparacionController {
         return dtoLista;
     }
     @GetMapping("/recaudacion_por_anio_mes")
-    public List<RecaudacionTotal_Por_Año_Mes> recaudacionTotalPorAñoMes(@RequestParam int anio, int mes)
+    public List<Recaudacion_por_mes_y_anioDTO> recaudacionPorMesYAnioDTOS(@RequestParam int anio, int mes)
     {
         List<String[]> filalista = rS.recaudacionTotalPorMesyAnio(anio,mes);
-        List<RecaudacionTotal_Por_Año_Mes> dtoLista = new ArrayList<>();
+        List<Recaudacion_por_mes_y_anioDTO> dtoLista = new ArrayList<>();
         for(String[] columna:filalista)
         {
-            RecaudacionTotal_Por_Año_Mes dto = new RecaudacionTotal_Por_Año_Mes();
+            Recaudacion_por_mes_y_anioDTO dto = new Recaudacion_por_mes_y_anioDTO();
             dto.setAnio(Integer.parseInt(columna[0]));
             dto.setMes(Integer.parseInt(columna[1]));
-            dto.setRecaudaciontotal(Integer.parseInt(columna[2]));
+            dto.setRecaudacion_total(Float.parseFloat(columna[2]));
             dtoLista.add(dto);
         }
         return dtoLista;
