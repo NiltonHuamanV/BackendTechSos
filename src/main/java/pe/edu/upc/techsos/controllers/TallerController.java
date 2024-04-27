@@ -51,5 +51,13 @@ public class TallerController {
         TallerDTO dto = d.map(dS.listid(id),TallerDTO.class);
         return dto;
     }
+    @GetMapping("/listartallerespordistrito")
+    public List<TallerDTO> listartalleresdistrito(@RequestParam String distrito)
+    {
+        return dS.listTalleres(distrito).stream().map(y-> {
+            ModelMapper m= new ModelMapper();
+            return m.map(y,TallerDTO.class);
+        }).collect(Collectors.toList());
+    }
 
 }

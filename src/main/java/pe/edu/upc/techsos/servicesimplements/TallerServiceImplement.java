@@ -26,4 +26,9 @@ public class TallerServiceImplement implements ITallerService {
         return dR.findById(id).orElse(new Taller());
     }
 
+    @Override
+    public List<Taller> listTalleres(String distrito) {
+        return dR.listTalleres(distrito);
+    }
+
 }
