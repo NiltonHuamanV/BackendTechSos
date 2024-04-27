@@ -7,6 +7,7 @@ import pe.edu.upc.techsos.dtos.TecnicoDTO;
 import pe.edu.upc.techsos.entities.Tecnico;
 import pe.edu.upc.techsos.servicesinterfaces.ITecnicoService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -50,6 +51,17 @@ public class TecnicoController {
         ModelMapper d = new ModelMapper();
         TecnicoDTO dto = d.map(dS.listid(id),TecnicoDTO.class);
         return dto;
+    }
+
+    @GetMapping("/{tallerId}")
+    public List<TecnicoDTO> ListByTaller(int tallerId) {
+        ModelMapper d = new ModelMapper();
+        List<Tecnico> tecnicos = dS.findByTaller(tallerId);
+        List<TecnicoDTO> tecnicoDTOS = new ArrayList<>();
+        for(Tecnico tecnico : tecnicos) {
+            tecnicoDTOS.add(d.map(tecnico, TecnicoDTO.class));
+        }
+        return tecnicoDTOS;
     }
 
 }

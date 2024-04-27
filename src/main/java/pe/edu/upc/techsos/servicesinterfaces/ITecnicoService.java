@@ -8,6 +8,6 @@ public interface ITecnicoService {
 
     List<Tecnico> list();
     void delete(int id);
-
     Tecnico listid(int id);
+    List<Tecnico> findByTaller(int idTaller);
 }

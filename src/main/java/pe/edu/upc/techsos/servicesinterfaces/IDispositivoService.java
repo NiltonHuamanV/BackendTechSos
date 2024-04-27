@@ -5,6 +5,7 @@ import pe.edu.upc.techsos.entities.Dispositivo;
 import java.util.List;
 
 public interface IDispositivoService {
+    public Dispositivo getById(int id);
     public void insert(Dispositivo dispositivo);
     public List<Dispositivo> list();
     public void delete (int id);
@@ -13,4 +14,5 @@ public interface IDispositivoService {
     public List<String[]> sumDispositivosPorTallerYEstado();
 
     public List<String[]> sumDispositivosPorTallerMarcaModelo();
+    public Dispositivo findMasVecesRegistrado();
 }

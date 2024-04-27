@@ -83,4 +83,15 @@ public class DispositivoController {
         return dtoLista;
     }
 
+    @GetMapping("max-registered")
+    public DispositivoDTO maxRegistered() {
+        ModelMapper m= new ModelMapper();
+        return m.map(dS.findMasVecesRegistrado(), DispositivoDTO.class);
+    }
+    @GetMapping("get/{id}")
+    public DispositivoDTO getId(@PathVariable("id") Integer id) {
+        ModelMapper m= new ModelMapper();
+        return m.map(dS.findMasVecesRegistrado(), DispositivoDTO.class);
+    }
+
 }

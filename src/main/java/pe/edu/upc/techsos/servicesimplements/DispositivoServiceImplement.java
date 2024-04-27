@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import pe.edu.upc.techsos.entities.Dispositivo;
 import pe.edu.upc.techsos.repositories.IDispositivoRepository;
 import pe.edu.upc.techsos.servicesinterfaces.IDispositivoService;
+import pe.edu.upc.techsos.shared.exceptions.ResourceNotFoundException;
 
 import java.util.List;
 
@@ -12,6 +13,13 @@ import java.util.List;
 public class DispositivoServiceImplement implements IDispositivoService {
 @Autowired
 private IDispositivoRepository dR;
+
+    @Override
+    public Dispositivo getById(int id) {
+        return dR.findById(id).orElseThrow(() -> new ResourceNotFoundException("Dispositivo no encontrado"));
+    }
+
+
     @Override
     public void insert(Dispositivo dispositivo) {dR.save(dispositivo);}
     @Override
@@ -35,6 +43,11 @@ private IDispositivoRepository dR;
     @Override
     public List<String[]> sumDispositivosPorTallerMarcaModelo() {
         return dR.sumDispositivosPorTallerMarcaModelo();
+    }
+
+    @Override
+    public Dispositivo findMasVecesRegistrado() {
+        return dR.findFirstByOrderByVecesRegistradoDesc().orElseThrow(() -> new ResourceNotFoundException("Ha ocurrido algo!")) ;
     }
 
 }
