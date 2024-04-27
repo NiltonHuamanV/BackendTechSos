@@ -2,6 +2,7 @@ package pe.edu.upc.techsos.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.techsos.dtos.TallerDTO;
 import pe.edu.upc.techsos.entities.Taller;
@@ -17,6 +18,7 @@ public class TallerController {
     @Autowired
     private ITallerService dS;
     @PostMapping
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('TALLER')")
     public void insertar (@RequestBody TallerDTO tallerDTO)
     {
         ModelMapper d = new ModelMapper();
@@ -24,6 +26,7 @@ public class TallerController {
         dS.insert(taller);
     }
     @PutMapping
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     public void modificar (@RequestBody TallerDTO tallerDTO)
     {
         ModelMapper d = new ModelMapper();
@@ -39,6 +42,7 @@ public class TallerController {
         }).collect(Collectors.toList());
     }
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('TALLER') or hasAuthority('ADMIN')")
     public void eliminar(@PathVariable("id") Integer id)
     {
         dS.delete(id);

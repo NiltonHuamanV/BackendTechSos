@@ -2,6 +2,7 @@ package pe.edu.upc.techsos.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.techsos.dtos.TecnicoDTO;
 import pe.edu.upc.techsos.entities.Tecnico;
@@ -17,6 +18,7 @@ public class TecnicoController {
     @Autowired
     private ITecnicoService dS;
     @PostMapping
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('TALLER')")
     public void insertar (@RequestBody TecnicoDTO tecnicoDTO)
     {
         ModelMapper d = new ModelMapper();
@@ -24,6 +26,7 @@ public class TecnicoController {
         dS.insert(tecnico);
     }
     @PutMapping
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('TALLER')")
     public void modificar (@RequestBody TecnicoDTO tecnicoDTO)
     {
         ModelMapper d = new ModelMapper();
@@ -39,6 +42,7 @@ public class TecnicoController {
         }).collect(Collectors.toList());
     }
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('TALLER')")
     public void eliminar(@PathVariable("id") Integer id)
     {
         dS.delete(id);

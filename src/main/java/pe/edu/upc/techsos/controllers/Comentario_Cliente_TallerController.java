@@ -2,6 +2,7 @@ package pe.edu.upc.techsos.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.techsos.dtos.*;
 import pe.edu.upc.techsos.entities.Comentario_Cliente_Taller;
@@ -20,6 +21,7 @@ public class Comentario_Cliente_TallerController {
     @Autowired
     private IComentario_Cliente_TallerService cS;
     @PostMapping
+    @PreAuthorize("hasAuthority('CLIENTE') or hasAuthority('ADMIN')")
     public void insertar (@RequestBody Comentario_Cliente_TallerDTO comentarioClienteTallerDTO)
     {
         ModelMapper d = new ModelMapper();
@@ -27,6 +29,7 @@ public class Comentario_Cliente_TallerController {
         cS.insert(comentarioClienteTaller);
     }
     @PutMapping
+    @PreAuthorize("hasAuthority('CLIENTE')")
     public void modificar (@RequestBody Comentario_Cliente_TallerDTO comentarioClienteTallerDTO)
     {
         ModelMapper d = new ModelMapper();
@@ -42,11 +45,11 @@ public class Comentario_Cliente_TallerController {
         }).collect(Collectors.toList());
     }
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('CLIENTE')")
     public void eliminar(@PathVariable("id") Integer id)
     {
         cS.delete(id);
     }
-
 
     @GetMapping("/mejoresTalleres")
     public List<MejoresTalleresDTO> ListarMejoresTalleres() {
