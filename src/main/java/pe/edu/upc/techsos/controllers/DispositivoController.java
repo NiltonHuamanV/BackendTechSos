@@ -4,10 +4,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import pe.edu.upc.techsos.dtos.DispositivoDTO;
-import pe.edu.upc.techsos.dtos.SumDispositivosTallerEstadoDTO;
-import pe.edu.upc.techsos.dtos.SumDispositivosTallerMarcaModeloDTO;
+import pe.edu.upc.techsos.dtos.*;
 import pe.edu.upc.techsos.entities.Dispositivo;
+import pe.edu.upc.techsos.entities.Taller;
 import pe.edu.upc.techsos.servicesinterfaces.IDispositivoService;
 
 import java.util.ArrayList;
@@ -87,6 +86,27 @@ public class DispositivoController {
             dto.setNombreModelo(columna[2]);
             dto.setCantidadDispositivos(Integer.parseInt(columna[3]));
             dtoLista.add(dto);
+        }
+        return dtoLista;
+    }
+    @GetMapping("/estadoenreparacion/{id}")
+    public EstadoDispositivoReparacion getEstadoDispositivoReparacion(@PathVariable("id") Long id){
+        String[] res = dS.getEstadoDispositivoEnReparacion(id).get(0);
+        EstadoDispositivoReparacion d = new EstadoDispositivoReparacion();
+        d.setId(Long.parseLong(res[0]));
+        d.setModelo(res[1]);
+        d.setEstado(res[2]);
+        return d;
+    }
+    @GetMapping("/cantidadestado/:{id}")
+    public List<CantidadDispositivoEstado> getCantidadDispositivoEstado(@PathVariable("id") Long tallerId){
+        List<String[]> res=dS.getCantidadDispositivosPorEstado(tallerId);
+        List<CantidadDispositivoEstado> dtoLista = new ArrayList<>();
+        for(String[] columna:res){
+            CantidadDispositivoEstado d = new CantidadDispositivoEstado();
+            d.setEstado(columna[0]);
+            d.setCantidad(Integer.parseInt(columna[1]));
+            dtoLista.add(d);
         }
         return dtoLista;
     }

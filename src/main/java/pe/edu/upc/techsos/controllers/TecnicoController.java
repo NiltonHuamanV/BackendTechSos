@@ -5,9 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.techsos.dtos.TecnicoDTO;
+import pe.edu.upc.techsos.dtos.TecnicoExperienciaTaller;
 import pe.edu.upc.techsos.entities.Tecnico;
 import pe.edu.upc.techsos.servicesinterfaces.ITecnicoService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -55,5 +57,19 @@ public class TecnicoController {
         TecnicoDTO dto = d.map(dS.listid(id),TecnicoDTO.class);
         return dto;
     }
-
+    @GetMapping("/experiencia")
+    public List<TecnicoExperienciaTaller> getExperienciaTecnicoTalleres(){
+        List<String[]> res= dS.getExperienciaTecnicoTalleres();
+        List<TecnicoExperienciaTaller> lista = new ArrayList<>();
+        for( String[] x: res){
+            TecnicoExperienciaTaller tecnico = new TecnicoExperienciaTaller();
+            tecnico.setAniosExperiencia(Integer.parseInt(x[0]));
+            tecnico.setNombre(x[1]);
+            tecnico.setApellido(x[2]);
+            tecnico.setTallerId(Long.parseLong(x[3]));
+            tecnico.setTallerNombre(x[4]);
+            lista.add(tecnico);
+        }
+        return lista;
+    }
 }

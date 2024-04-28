@@ -10,4 +10,5 @@ public interface ITecnicoService {
     void delete(int id);
 
     Tecnico listid(int id);
+    List<String[]> getExperienciaTecnicoTalleres();
 }

@@ -1,6 +1,6 @@
 package pe.edu.upc.techsos.servicesinterfaces;
 
-import org.springframework.data.repository.query.Param;
+import pe.edu.upc.techsos.dtos.TallerDTO;
 import pe.edu.upc.techsos.entities.Taller;
 
 import java.util.List;
@@ -12,8 +12,7 @@ public interface ITallerService {
     void delete(int id);
 
     Taller listid(int id);
-
-    public List<Taller> listTalleres(String distrito);
-
-
+    List<String[]> getPosibleGananciaPorTaller(int tallerId);
+    List<Taller> getTalleresPorDistrito(int distritoId);
+    List<Taller> getTalleresConMejorCalificacion();
 }

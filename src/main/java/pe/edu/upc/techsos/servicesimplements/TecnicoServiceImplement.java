@@ -26,4 +26,9 @@ public class TecnicoServiceImplement implements ITecnicoService {
         return dR.findById(id).orElse(new Tecnico());
     }
 
+    @Override
+    public List<String[]> getExperienciaTecnicoTalleres() {
+        return dR.getAniosExperienciaTecnicos();
+    }
+
 }

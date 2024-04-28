@@ -2,7 +2,9 @@ package pe.edu.upc.techsos.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.PathVariable;
 import pe.edu.upc.techsos.entities.Dispositivo;
 
 import java.util.List;
@@ -41,5 +43,11 @@ public interface IDispositivoRepository extends JpaRepository<Dispositivo,Intege
             "group by \n" +
             "    t.nombre_taller, ma.nombre, m.nombre;", nativeQuery = true)
     public List<String[]> sumDispositivosPorTallerMarcaModelo();
+    @Query("select d.idDispositivo,d.modelo,r.Estado from Dispositivo d join DispositivoTaller dt on dt.dispositivo.idDispositivo=d.idDispositivo\n"+
+    "join Reparacion r on dt.idDispositivoTaller=r.dispositivoTaller.idDispositivoTaller where d.idDispositivo=:id")
+    public List<String[]> getEstadoDispositivoEnRepacion(@Param("id") Long dispositivo_id);
+    @Query("select r.Estado,count(*) as cantidad from Reparacion r join DispositivoTaller dt on " +
+            "r.dispositivoTaller.idDispositivoTaller=dt.idDispositivoTaller where dt.taller.idTaller=:id group by r.Estado")
 
+    public List<String[]> getCantidadDispositivosPorEstado(@Param("id") Long tallerId);
 }
