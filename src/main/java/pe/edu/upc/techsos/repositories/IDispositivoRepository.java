@@ -48,5 +48,6 @@ public interface IDispositivoRepository extends JpaRepository<Dispositivo,Intege
     public List<String[]> getEstadoDispositivoEnRepacion(@Param("id") Long dispositivo_id);
     @Query("select r.Estado,count(*) as cantidad from Reparacion r join DispositivoTaller dt on " +
             "r.dispositivoTaller.idDispositivoTaller=dt.idDispositivoTaller where dt.taller.idTaller=:id group by r.Estado")
+
     public List<String[]> getCantidadDispositivosPorEstado(@Param("id") Long tallerId);
 }
