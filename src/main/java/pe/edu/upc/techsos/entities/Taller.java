@@ -16,6 +16,8 @@ public class Taller {
     @Column(name = "Direccion", nullable = false, length = 100)
     private String direccion;
 
+
+
     @ManyToOne
     @JoinColumn(name = "districtId")
     private District district;

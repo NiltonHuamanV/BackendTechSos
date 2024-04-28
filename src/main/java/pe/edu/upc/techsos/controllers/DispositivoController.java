@@ -2,6 +2,7 @@ package pe.edu.upc.techsos.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.techsos.dtos.*;
 import pe.edu.upc.techsos.entities.Dispositivo;
@@ -19,6 +20,7 @@ public class DispositivoController {
     @Autowired
     private IDispositivoService dS;
     @PostMapping
+    @PreAuthorize("hasAuthority('CLIENTE')")
     public void insertar (@RequestBody DispositivoDTO dispositivoDTO)
     {
         ModelMapper d = new ModelMapper();
@@ -26,6 +28,7 @@ public class DispositivoController {
         dS.insert(dispositivo);
     }
     @PutMapping
+    @PreAuthorize("hasAuthority('CLIENTE')")
     public void modificar (@RequestBody DispositivoDTO dispositivoDTO)
     {
         ModelMapper d = new ModelMapper();
@@ -40,12 +43,15 @@ public class DispositivoController {
             return m.map(y,DispositivoDTO.class);
         }).collect(Collectors.toList());
     }
+
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('CLIENTE')")
     public void eliminar(@PathVariable("id") Integer id)
     {
         dS.delete(id);
     }
     @GetMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public DispositivoDTO listarId(@PathVariable ("id") Integer id)
     {
         ModelMapper d = new ModelMapper();
@@ -54,6 +60,7 @@ public class DispositivoController {
     }
 
     @GetMapping("/cantidaddispositivostallerestado")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('TALLER')")
     public List<SumDispositivosTallerEstadoDTO> cantidadDispositivosTallerEstado(){
         List<String[]> filaLista = dS.sumDispositivosPorTallerYEstado();
         List<SumDispositivosTallerEstadoDTO> dtoLista = new ArrayList<>();
@@ -68,6 +75,7 @@ public class DispositivoController {
     }
 
     @GetMapping("/cantidaddispositivostallermarcamodelo")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('TALLER')")
     public List<SumDispositivosTallerMarcaModeloDTO> cantidadDispositivosTallerMarcaModelo(){
         List<String[]> filaLista = dS.sumDispositivosPorTallerMarcaModelo();
         List<SumDispositivosTallerMarcaModeloDTO> dtoLista = new ArrayList<>();
