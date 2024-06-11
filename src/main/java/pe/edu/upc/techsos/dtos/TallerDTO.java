@@ -2,7 +2,6 @@ package pe.edu.upc.techsos.dtos;
 
 
 import pe.edu.upc.techsos.entities.District;
-import pe.edu.upc.techsos.entities.Tecnico;
 
 public class TallerDTO {
 
@@ -12,8 +11,6 @@ public class TallerDTO {
     private String numerodetelefono;
     private String direccion;
     private District district;
-    private Tecnico tecnico;
-
 
     public int getIdTaller() {
         return idTaller;
@@ -53,11 +50,5 @@ public class TallerDTO {
     public void setDistrict(District district) {
         this.district = district;
     }
-    public Tecnico getTecnico() {
-        return tecnico;
-    }
 
-    public void setTecnico(Tecnico tecnico) {
-        this.tecnico = tecnico;
-    }
 }

@@ -16,26 +16,19 @@ public class Taller {
     @Column(name = "Direccion", nullable = false, length = 100)
     private String direccion;
 
-
-
     @ManyToOne
     @JoinColumn(name = "districtId")
     private District district;
-    @OneToOne
-    @JoinColumn(name = "tecnicoId")
-    private Tecnico tecnico;
 
-    public Taller(int idTaller, String nombre, String numerodetelefono, String direccion, District district, Tecnico tecnico) {
+    public Taller() {
+    }
+
+    public Taller(int idTaller, String nombre, String numerodetelefono, String direccion, District district) {
         this.idTaller = idTaller;
         this.nombre = nombre;
         this.numerodetelefono = numerodetelefono;
         this.direccion = direccion;
         this.district = district;
-        this.tecnico = tecnico;
-    }
-
-    public Taller() {
-
     }
 
     public int getIdTaller() {
@@ -61,6 +54,7 @@ public class Taller {
     public void setNumerodetelefono(String numerodetelefono) {
         this.numerodetelefono = numerodetelefono;
     }
+
     public String getDireccion() {
         return direccion;
     }
@@ -75,13 +69,6 @@ public class Taller {
 
     public void setDistrict(District district) {
         this.district = district;
-    }
-    public Tecnico getTecnico() {
-        return tecnico;
-    }
-
-    public void setTecnico(Tecnico tecnico) {
-        this.tecnico = tecnico;
     }
 }
 

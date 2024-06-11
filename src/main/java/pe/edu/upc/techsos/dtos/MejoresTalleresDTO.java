@@ -1,8 +1,5 @@
 package pe.edu.upc.techsos.dtos;
 
-import pe.edu.upc.techsos.entities.District;
-import pe.edu.upc.techsos.entities.Tecnico;
-
 public class MejoresTalleresDTO
 {
     private int idTaller;
