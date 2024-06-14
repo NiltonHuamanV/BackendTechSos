@@ -23,6 +23,13 @@ public class ModeloController {
         Modelo modelo = d.map (modeloDTO, Modelo.class);
         dS.insert(modelo);
     }
+    @PutMapping
+    public void modificar (@RequestBody ModeloDTO modeloDTO)
+    {
+        ModelMapper d = new ModelMapper();
+        Modelo modelo = d.map (modeloDTO, Modelo.class);
+        dS.insert(modelo);
+    }
     @GetMapping
     public List<ModeloDTO> Listar()
     {
