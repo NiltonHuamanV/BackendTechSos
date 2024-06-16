@@ -22,7 +22,7 @@ public interface IComentario_Cliente_TallerRepository extends JpaRepository <Com
 
     @Query(value="SELECT T.id_taller,T.nombre_taller, AVG(CT.calificacion) AS PromedioCalificacion \n" +
             "FROM TALLER T \n" +
-            "LEFT JOIN comentario_cliente_taller CT ON T.id_taller = CT.taller_id \n" +
+            "INNER JOIN comentario_cliente_taller CT ON T.id_taller = CT.taller_id \n" +
             "GROUP BY T.id_taller, T.nombre_taller \n" +
             "ORDER BY PromedioCalificacion DESC;", nativeQuery = true)
     public List<String[]> PromedioTalleres();
@@ -30,7 +30,7 @@ public interface IComentario_Cliente_TallerRepository extends JpaRepository <Com
 
     @Query(value="SELECT T.id_taller, T.nombre_taller, AVG(CT.calificacion) AS PromedioCalificacion \n" +
             "FROM TALLER T \n" +
-            "LEFT JOIN comentario_cliente_taller  CT ON T.id_taller = CT.taller_id \n" +
+            "INNER JOIN comentario_cliente_taller  CT ON T.id_taller = CT.taller_id \n" +
             "GROUP BY T.id_taller, T.nombre_taller \n" +
             "ORDER BY PromedioCalificacion DESC \n" +
             "LIMIT 5;", nativeQuery = true)
