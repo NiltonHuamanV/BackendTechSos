@@ -3,13 +3,12 @@ package pe.edu.upc.techsos.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.techsos.dtos.CantidadDispositivo_Fecha_Reparacion;
 import pe.edu.upc.techsos.dtos.Recaudacion_por_mes_y_anioDTO;
 import pe.edu.upc.techsos.dtos.ReparacionDTO;
-import pe.edu.upc.techsos.dtos.TallerDTO;
 import pe.edu.upc.techsos.entities.Reparacion;
-import pe.edu.upc.techsos.entities.Taller;
 import pe.edu.upc.techsos.servicesinterfaces.IReparacionService;
 
 import java.time.LocalDate;
@@ -23,6 +22,7 @@ public class ReparacionController {
     @Autowired
     private IReparacionService rS;
     @PostMapping
+    @PreAuthorize("hasAuthority('TECNICO')")
     public void insertar (@RequestBody ReparacionDTO reparacionDTO)
     {
         ModelMapper d = new ModelMapper();
@@ -38,12 +38,14 @@ public class ReparacionController {
         }).collect(Collectors.toList());
     }
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('TECNICO')")
     public void eliminar(@PathVariable("id") Integer id)
     {
         rS.delete(id);
     }
 
     @PutMapping
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('TECNICO')")
     public void modificar (@RequestBody ReparacionDTO reparacionDTO)
     {
         ModelMapper d = new ModelMapper();
@@ -52,6 +54,7 @@ public class ReparacionController {
     }
 
     @GetMapping("/cantidad_dispositivo_fecha")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('TECNICO')")
     public List<CantidadDispositivo_Fecha_Reparacion> cantidadDispositivoFechaReparaciones(@RequestParam LocalDate fecha_menor, LocalDate fecha_mayor)
     {
         List<String[]> filalista = rS.cantidadDisipositivoReparacionFecha(fecha_menor,fecha_mayor);
@@ -66,6 +69,7 @@ public class ReparacionController {
         return dtoLista;
     }
     @GetMapping("/recaudacion_por_anio_mes")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('TECNICO')")
     public List<Recaudacion_por_mes_y_anioDTO> recaudacionPorMesYAnioDTOS(@RequestParam int anio, int mes)
     {
         List<String[]> filalista = rS.recaudacionTotalPorMesyAnio(anio,mes);
@@ -80,4 +84,5 @@ public class ReparacionController {
         }
         return dtoLista;
     }
+
 }

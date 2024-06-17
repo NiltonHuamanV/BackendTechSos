@@ -2,12 +2,14 @@ package pe.edu.upc.techsos.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import pe.edu.upc.techsos.dtos.*;
+import pe.edu.upc.techsos.dtos.Comentario_Cliente_TallerDTO;
+import pe.edu.upc.techsos.dtos.MejoresTalleresDTO;
+import pe.edu.upc.techsos.dtos.PromedioTalleresDTO;
+import pe.edu.upc.techsos.dtos.Top5TalleresDTO;
 import pe.edu.upc.techsos.entities.Comentario_Cliente_Taller;
-import pe.edu.upc.techsos.entities.Dispositivo;
 import pe.edu.upc.techsos.servicesinterfaces.IComentario_Cliente_TallerService;
-import pe.edu.upc.techsos.servicesinterfaces.IDispositivoService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +22,7 @@ public class Comentario_Cliente_TallerController {
     @Autowired
     private IComentario_Cliente_TallerService cS;
     @PostMapping
+    @PreAuthorize("hasAuthority('CLIENTE') or hasAuthority('ADMIN')")
     public void insertar (@RequestBody Comentario_Cliente_TallerDTO comentarioClienteTallerDTO)
     {
         ModelMapper d = new ModelMapper();
@@ -27,6 +30,7 @@ public class Comentario_Cliente_TallerController {
         cS.insert(comentarioClienteTaller);
     }
     @PutMapping
+    @PreAuthorize("hasAuthority('CLIENTE') or hasAuthority('ADMIN')")
     public void modificar (@RequestBody Comentario_Cliente_TallerDTO comentarioClienteTallerDTO)
     {
         ModelMapper d = new ModelMapper();
@@ -42,11 +46,11 @@ public class Comentario_Cliente_TallerController {
         }).collect(Collectors.toList());
     }
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('CLIENTE')")
     public void eliminar(@PathVariable("id") Integer id)
     {
         cS.delete(id);
     }
-
 
     @GetMapping("/mejoresTalleres")
     public List<MejoresTalleresDTO> ListarMejoresTalleres() {
@@ -93,7 +97,5 @@ public class Comentario_Cliente_TallerController {
         }
         return  dtoLista;
     }
-
-
 
 }
