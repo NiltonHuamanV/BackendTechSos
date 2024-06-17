@@ -2,6 +2,7 @@ package pe.edu.upc.techsos.servicesimplements;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pe.edu.upc.techsos.entities.Modelo;
 import pe.edu.upc.techsos.entities.Reparacion;
 import pe.edu.upc.techsos.repositories.IReparacionRepository;
 import pe.edu.upc.techsos.servicesinterfaces.IReparacionService;
@@ -21,6 +22,11 @@ public class ReparacionServiceImplements implements IReparacionService {
     @Override
     public void delete(int id) {
         rR.deleteById(id);
+    }
+
+    @Override
+    public Reparacion listid(int id) {
+        return rR.findById(id).orElse(new Reparacion());
     }
 
     @Override

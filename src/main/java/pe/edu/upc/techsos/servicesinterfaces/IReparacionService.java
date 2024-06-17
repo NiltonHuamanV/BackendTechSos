@@ -1,6 +1,7 @@
 package pe.edu.upc.techsos.servicesinterfaces;
 
 import org.springframework.data.repository.query.Param;
+import pe.edu.upc.techsos.entities.Modelo;
 import pe.edu.upc.techsos.entities.Reparacion;
 
 import java.time.LocalDate;
@@ -12,6 +13,8 @@ public interface IReparacionService {
     public List<Reparacion> list();
 
     public void delete (int id);
+
+    Reparacion listid(int id);
 
     List<String[]>cantidadDisipositivoReparacionFecha(LocalDate fecha_menor, LocalDate fecha_mayor);
 

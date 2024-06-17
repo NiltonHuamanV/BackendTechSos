@@ -4,10 +4,7 @@ package pe.edu.upc.techsos.controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import pe.edu.upc.techsos.dtos.CantidadDispositivo_Fecha_Reparacion;
-import pe.edu.upc.techsos.dtos.Recaudacion_por_mes_y_anioDTO;
-import pe.edu.upc.techsos.dtos.ReparacionDTO;
-import pe.edu.upc.techsos.dtos.TallerDTO;
+import pe.edu.upc.techsos.dtos.*;
 import pe.edu.upc.techsos.entities.Reparacion;
 import pe.edu.upc.techsos.entities.Taller;
 import pe.edu.upc.techsos.servicesinterfaces.IReparacionService;
@@ -49,6 +46,14 @@ public class ReparacionController {
         ModelMapper d = new ModelMapper();
         Reparacion reparacion = d.map (reparacionDTO, Reparacion.class);
         rS.insert(reparacion);
+    }
+
+    @GetMapping("/{id}")
+    public ReparacionDTO listarId(@PathVariable ("id") Integer id)
+    {
+        ModelMapper d = new ModelMapper();
+        ReparacionDTO dto = d.map(rS.listid(id),ReparacionDTO.class);
+        return dto;
     }
 
     @GetMapping("/cantidad_dispositivo_fecha")
