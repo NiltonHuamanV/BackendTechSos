@@ -13,6 +13,8 @@ public interface IReparacionService {
 
     public void delete (int id);
 
+    Reparacion listid(int id);
+
     List<String[]>cantidadDisipositivoReparacionFecha(LocalDate fecha_menor, LocalDate fecha_mayor);
 
     List<String[]>recaudacionTotalPorMesyAnio(int anio, int mes);

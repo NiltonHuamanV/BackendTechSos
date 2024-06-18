@@ -22,7 +22,7 @@ public class ReparacionController {
     @Autowired
     private IReparacionService rS;
     @PostMapping
-    @PreAuthorize("hasAuthority('TECNICO')")
+    @PreAuthorize("hasAuthority('TECNICO') or hasAuthority('ADMIN')")
     public void insertar (@RequestBody ReparacionDTO reparacionDTO)
     {
         ModelMapper d = new ModelMapper();
@@ -51,6 +51,14 @@ public class ReparacionController {
         ModelMapper d = new ModelMapper();
         Reparacion reparacion = d.map (reparacionDTO, Reparacion.class);
         rS.insert(reparacion);
+    }
+
+    @GetMapping("/{id}")
+    public ReparacionDTO listarId(@PathVariable ("id") Integer id)
+    {
+        ModelMapper d = new ModelMapper();
+        ReparacionDTO dto = d.map(rS.listid(id),ReparacionDTO.class);
+        return dto;
     }
 
     @GetMapping("/cantidad_dispositivo_fecha")
