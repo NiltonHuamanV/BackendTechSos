@@ -24,6 +24,11 @@ public class ReparacionServiceImplements implements IReparacionService {
     }
 
     @Override
+    public Reparacion listid(int id) {
+        return rR.findById(id).orElse(new Reparacion());
+    }
+
+    @Override
     public List<String[]> cantidadDisipositivoReparacionFecha(LocalDate fecha_menor, LocalDate fecha_mayor) {
         return rR.cantidadDisipositivoReparacionFecha(fecha_menor,fecha_mayor);
     }
