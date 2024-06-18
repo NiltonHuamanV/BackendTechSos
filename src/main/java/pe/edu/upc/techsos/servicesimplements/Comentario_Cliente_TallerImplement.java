@@ -22,6 +22,11 @@ public class Comentario_Cliente_TallerImplement implements IComentario_Cliente_T
     }
 
     @Override
+    public Comentario_Cliente_Taller listid(int id) {
+        return cR.findById(id).orElse(new Comentario_Cliente_Taller());
+    }
+    
+    @Override
     public List<String[]> ListarMejoresTalleres() { return cR.ListarMejoresTalleres();  }
 
     @Override
