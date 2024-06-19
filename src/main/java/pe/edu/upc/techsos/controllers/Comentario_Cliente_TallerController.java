@@ -52,6 +52,14 @@ public class Comentario_Cliente_TallerController {
         cS.delete(id);
     }
 
+    @GetMapping("/{id}")
+    public Comentario_Cliente_TallerDTO listarId(@PathVariable ("id") Integer id)
+    {
+        ModelMapper d = new ModelMapper();
+        Comentario_Cliente_TallerDTO dto = d.map(cS.listid(id),Comentario_Cliente_TallerDTO.class);
+        return dto;
+    }
+
     @GetMapping("/mejoresTalleres")
     public List<MejoresTalleresDTO> ListarMejoresTalleres() {
         List<String[]> filaLista = cS.ListarMejoresTalleres();
