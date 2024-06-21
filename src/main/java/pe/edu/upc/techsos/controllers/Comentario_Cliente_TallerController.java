@@ -70,7 +70,8 @@ public class Comentario_Cliente_TallerController {
             dto.setNombre_taller(columna[1]);
             dto.setTelefono(columna[2]);
             dto.setDireccion(columna[3]);
-            dto.setPromediocalificacion(Double.parseDouble(columna[4]));
+            dto.setDescripcion(columna[4]);
+            dto.setPromediocalificacion(Double.parseDouble(columna[5]));
             dtoLista.add(dto);
         }
         return  dtoLista;
