@@ -48,4 +48,12 @@ public class MejoresTalleresDTO
     public void setPromediocalificacion(double promediocalificacion) {
         this.promediocalificacion = promediocalificacion;
     }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
 }
