@@ -19,4 +19,6 @@ public interface IReparacionService {
 
     List<String[]>recaudacionTotalPorMesyAnio(int anio, int mes);
 
+    List<String[]>sumTotalCostoByModelo();
+
 }

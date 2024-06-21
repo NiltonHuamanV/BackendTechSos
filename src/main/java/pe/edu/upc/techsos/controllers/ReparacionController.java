@@ -5,9 +5,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import pe.edu.upc.techsos.dtos.CantidadDispositivo_Fecha_Reparacion;
-import pe.edu.upc.techsos.dtos.Recaudacion_por_mes_y_anioDTO;
-import pe.edu.upc.techsos.dtos.ReparacionDTO;
+import pe.edu.upc.techsos.dtos.*;
 import pe.edu.upc.techsos.entities.Reparacion;
 import pe.edu.upc.techsos.servicesinterfaces.IReparacionService;
 
@@ -88,6 +86,19 @@ public class ReparacionController {
             dto.setAnio(Integer.parseInt(columna[0]));
             dto.setMes(Integer.parseInt(columna[1]));
             dto.setRecaudacion_total(Float.parseFloat(columna[2]));
+            dtoLista.add(dto);
+        }
+        return dtoLista;
+    }
+
+    @GetMapping("/sumtotalcostopormodelo")
+    public List<SumTotalCostoByModeloDTO> sumTotalCostoByModeloDTOS(){
+        List<String[]> filaLista = rS.sumTotalCostoByModelo();
+        List<SumTotalCostoByModeloDTO> dtoLista = new ArrayList<>();
+        for(String[] columna:filaLista){
+            SumTotalCostoByModeloDTO dto = new SumTotalCostoByModeloDTO();
+            dto.setModelo(columna[0]);
+            dto.setTotal(Float.parseFloat(columna[1]));
             dtoLista.add(dto);
         }
         return dtoLista;

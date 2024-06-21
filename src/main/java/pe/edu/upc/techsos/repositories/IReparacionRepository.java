@@ -22,4 +22,10 @@ public interface IReparacionRepository extends JpaRepository<Reparacion,Integer>
             "Extract(MONTH FROM r.fecha_inicio) =:mes group by anio, mes", nativeQuery = true)
     List<String[]>recaudacionTotalPorMesyAnio(@Param("anio") int anio, @Param("mes") int mes);
 
+    @Query(value = "select m.nombre as modelo, sum(r.costo) as suma_total from \n" +
+            "Reparacion r inner join Dispositivo_taller dt on r.dispositivo_taller_id = dt.id_dispositivo_taller\n" +
+            "inner join Dispositivo d on dt.dispositivo_id = d.id_dispositivo inner join Modelo m \n" +
+            "on d.modelo_id = m.id_modelo group by m.nombre", nativeQuery = true)
+    List<String[]>sumTotalCostoByModelo();
+
 }

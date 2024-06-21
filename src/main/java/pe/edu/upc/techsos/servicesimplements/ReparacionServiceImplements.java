@@ -38,4 +38,9 @@ public class ReparacionServiceImplements implements IReparacionService {
         return rR.recaudacionTotalPorMesyAnio(anio, mes);
     }
 
+    @Override
+    public List<String[]> sumTotalCostoByModelo() {
+        return rR.sumTotalCostoByModelo();
+    }
+
 }
