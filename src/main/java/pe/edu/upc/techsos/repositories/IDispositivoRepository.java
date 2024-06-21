@@ -42,4 +42,10 @@ public interface IDispositivoRepository extends JpaRepository<Dispositivo,Intege
             "    t.nombre_taller, ma.nombre, m.nombre;", nativeQuery = true)
     public List<String[]> sumDispositivosPorTallerMarcaModelo();
 
+    @Query(value = "select ma.nombre as marca, m.nombre as modelo, count (*) as cantidad\n" +
+            "from dispositivo d inner join  modelo m on\n" +
+            "m.id_modelo = d.modelo_id inner join marca ma on m.marca_id = ma.id_marca \n" +
+            "group by ma.nombre, m.nombre", nativeQuery = true)
+    public List<String[]> quantityMarcaModeloDefectuosos();
+
 }

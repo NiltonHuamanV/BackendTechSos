@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.techsos.dtos.CantidadMarcaModeloDefectuosoDTO;
 import pe.edu.upc.techsos.dtos.DispositivoDTO;
 import pe.edu.upc.techsos.dtos.SumDispositivosTallerEstadoDTO;
 import pe.edu.upc.techsos.dtos.SumDispositivosTallerMarcaModeloDTO;
@@ -86,6 +87,19 @@ public class DispositivoController {
             dto.setNombreMarca(columna[1]);
             dto.setNombreModelo(columna[2]);
             dto.setCantidadDispositivos(Integer.parseInt(columna[3]));
+            dtoLista.add(dto);
+        }
+        return dtoLista;
+    }
+    @GetMapping("/cantidadmarcamodelodefectuosos")
+    public List<CantidadMarcaModeloDefectuosoDTO> cantidadMarcaModeloDefectuosoDTOS(){
+        List<String[]> filaLista = dS.quantityMarcaModeloDefectuosos();
+        List<CantidadMarcaModeloDefectuosoDTO> dtoLista = new ArrayList<>();
+        for(String[] columna:filaLista){
+            CantidadMarcaModeloDefectuosoDTO dto = new CantidadMarcaModeloDefectuosoDTO();
+            dto.setMarca(columna[0]);
+            dto.setModelo(columna[1]);
+            dto.setCantidad(Integer.parseInt(columna[2]));
             dtoLista.add(dto);
         }
         return dtoLista;

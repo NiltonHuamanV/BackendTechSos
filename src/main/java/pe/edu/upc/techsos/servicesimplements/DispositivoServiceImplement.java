@@ -37,4 +37,9 @@ private IDispositivoRepository dR;
         return dR.sumDispositivosPorTallerMarcaModelo();
     }
 
+    @Override
+    public List<String[]> quantityMarcaModeloDefectuosos() {
+        return dR.quantityMarcaModeloDefectuosos();
+    }
+
 }

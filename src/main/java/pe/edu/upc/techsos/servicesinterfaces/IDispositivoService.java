@@ -12,5 +12,8 @@ public interface IDispositivoService {
 
     public List<String[]> sumDispositivosPorTallerYEstado();
 
+
     public List<String[]> sumDispositivosPorTallerMarcaModelo();
+
+    public List<String[]> quantityMarcaModeloDefectuosos();
 }
