@@ -62,7 +62,6 @@ public class DispositivoController {
     }
 
     @GetMapping("/cantidaddispositivostallerestado")
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('TECNICO')")
     public List<SumDispositivosTallerEstadoDTO> cantidadDispositivosTallerEstado(){
         List<String[]> filaLista = dS.sumDispositivosPorTallerYEstado();
         List<SumDispositivosTallerEstadoDTO> dtoLista = new ArrayList<>();
@@ -77,7 +76,6 @@ public class DispositivoController {
     }
 
     @GetMapping("/cantidaddispositivostallermarcamodelo")
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('TECNICO')")
     public List<SumDispositivosTallerMarcaModeloDTO> cantidadDispositivosTallerMarcaModelo(){
         List<String[]> filaLista = dS.sumDispositivosPorTallerMarcaModelo();
         List<SumDispositivosTallerMarcaModeloDTO> dtoLista = new ArrayList<>();

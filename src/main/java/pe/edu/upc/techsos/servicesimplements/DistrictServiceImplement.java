@@ -17,6 +17,12 @@ import java.util.List;
         }
 
         @Override
+        public void delete(int id) {
+            mR.deleteById(id);
+
+        }
+
+        @Override
         public List<District> list() {
             return mR.findAll();
         }

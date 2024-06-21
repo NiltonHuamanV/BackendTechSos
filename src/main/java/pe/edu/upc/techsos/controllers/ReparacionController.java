@@ -60,7 +60,6 @@ public class ReparacionController {
     }
 
     @GetMapping("/cantidad_dispositivo_fecha")
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('TECNICO')")
     public List<CantidadDispositivo_Fecha_Reparacion> cantidadDispositivoFechaReparaciones(@RequestParam LocalDate fecha_menor, LocalDate fecha_mayor)
     {
         List<String[]> filalista = rS.cantidadDisipositivoReparacionFecha(fecha_menor,fecha_mayor);
@@ -75,7 +74,6 @@ public class ReparacionController {
         return dtoLista;
     }
     @GetMapping("/recaudacion_por_anio_mes")
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('TECNICO')")
     public List<Recaudacion_por_mes_y_anioDTO> recaudacionPorMesYAnioDTOS(@RequestParam int anio, int mes)
     {
         List<String[]> filalista = rS.recaudacionTotalPorMesyAnio(anio,mes);

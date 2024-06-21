@@ -31,5 +31,12 @@ public class DistrictController {
 
         }).collect(Collectors.toList());
     }
+    @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public void eliminar(@PathVariable("id") Integer id)
+    {
+        ms.delete(id);
+    }
+
 }
 
