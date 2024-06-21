@@ -11,11 +11,11 @@ import java.util.List;
 public interface IComentario_Cliente_TallerRepository extends JpaRepository <Comentario_Cliente_Taller, Integer>
 {
 
-    @Query(value="SELECT T.id_taller,T.nombre_taller,T.telefono,T.direccion, AVG(CT.calificacion) AS PromedioCalificacion \n" +
-            "FROM taller T \n" +
-            "INNER JOIN comentario_cliente_taller CT ON T.id_taller = CT.taller_id \n" +
-            "GROUP BY T.id_taller,T.nombre_taller,T.telefono, T.direccion \n" +
-            "HAVING AVG(CT.calificacion) >= 8 \n" +
+    @Query(value="SELECT T.id_taller,T.nombre_taller,T.telefono,T.direccion,CT.descripcion, AVG(CT.calificacion) AS PromedioCalificacion    \n" +
+            "FROM taller T  \n" +
+            "INNER JOIN comentario_cliente_taller CT ON T.id_taller = CT.taller_id  \n" +
+            "GROUP BY T.id_taller,T.nombre_taller,T.telefono, T.direccion, CT.descripcion   \n" +
+            "HAVING AVG(CT.calificacion) >= 8   \n" +
             "ORDER BY PromedioCalificacion DESC;", nativeQuery = true)
     public List<String[]> ListarMejoresTalleres();
 
