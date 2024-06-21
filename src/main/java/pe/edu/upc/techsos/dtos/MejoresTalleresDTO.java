@@ -6,6 +6,7 @@ public class MejoresTalleresDTO
     private String nombre_taller;
     private String telefono;
     private String direccion;
+    private String descripcion;
     private double promediocalificacion;
 
     public int getIdTaller() {
