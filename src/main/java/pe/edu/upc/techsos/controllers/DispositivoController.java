@@ -30,7 +30,7 @@ public class DispositivoController {
         dS.insert(dispositivo);
     }
     @PutMapping
-    @PreAuthorize("hasAuthority('CLIENTE' or hasAuthority('ADMIN'))")
+    @PreAuthorize ("hasAuthority('CLIENTE') or hasAuthority('ADMIN')")
     public void modificar (@RequestBody DispositivoDTO dispositivoDTO)
     {
         ModelMapper d = new ModelMapper();
